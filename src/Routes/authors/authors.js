@@ -3,6 +3,7 @@ import uniqid from 'uniqid'
 import fs, { writeFileSync } from 'fs'
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path'
+import { authorsValidation, body } from '../../middlewares/validator'
 
 const userRouter = express.Router();
 
@@ -34,7 +35,7 @@ userRouter.get("/:id", (req, res, next) => {
 
 // POST =============
 // =================
-userRouter.post("/", (req, res, next) => {
+userRouter.post("/", authorsValidation, (req, res, next) => {
         const newUser = {
             id: uniqid(),
             ...req.body,
