@@ -5,7 +5,12 @@ import userRouter from './Routes/authors/authors.js'
 import productRouter from './Routes/products/products.js'
 import prodRouter from './Routes/products/prod.js'
 //import cors from 'cors'
-import { genericError } from './middlewares/errorHandler.js'
+import {
+    genericError,
+    notFoundError,
+    badrequestError,
+    unauthorizedError
+} from './middlewares/errorHandler.js'
 
 
 const server = express()
@@ -25,6 +30,10 @@ server.use("/prod", prodRouter)
 // ======== Errors Handeler
 
 server.use(genericError)
+server.use(badrequestError)
+server.use(notFoundError)
+server.use(unauthorizedError)
+
 console.table(listendpoints(server))
 server.listen(port, () => {
     console.log(`server is running on port ${port}`)
