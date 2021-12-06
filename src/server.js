@@ -4,7 +4,7 @@ import mainRouter from './Routes/mainroute.js'
 import userRouter from './Routes/authors/authors.js'
 import productRouter from './Routes/products/products.js'
 import prodRouter from './Routes/products/prod.js'
-import cors from 'cors'
+//import cors from 'cors'
 import { genericError } from './middlewares/errorHandler.js'
 
 
@@ -12,10 +12,10 @@ const server = express()
 const port = 3001
 
 //========= Middlewares
-server.use(cors())
-server.use(express.json())
 
-// ======== Endpoints
+server.use(express.json())
+    //server.use(cors())
+    // ======== Endpoints
 
 server.use("/mainroute", mainRouter)
 server.use("/users", userRouter)
